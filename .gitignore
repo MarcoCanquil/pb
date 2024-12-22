@@ -4,7 +4,7 @@
 # Ignorar la carpeta virtualenv
 venv/
 
-/media/
+media/
 
 # Ignorar archivos de caché de Python
 __pycache__/
