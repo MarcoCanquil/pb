@@ -19,6 +19,7 @@ DATABASES = {
 
 # Configuración para servir archivos estáticos en producción
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_URL = '/static/'
 
 # Configuración adicional para seguridad
 SECURE_SSL_REDIRECT = True
