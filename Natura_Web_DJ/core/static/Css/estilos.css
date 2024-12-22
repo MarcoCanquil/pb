@@ -1,0 +1,643 @@
+/* Fuente MONTSERRAT*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.menu_principal{
+
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color:white;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0,0.3);
+    
+}
+
+.espacio{
+    width: 100%;
+    height: 85px;
+}
+
+.contenedor_logo{
+    display: flex;
+   
+    margin-left: 10vw;
+    align-items: center;
+    
+}
+
+.menu_logo{
+
+    height: 70px;
+    width: 70px;
+}
+
+.contenedor_contenido{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 150px;
+    margin-right: 10vw;
+    
+}
+
+.contenedor_canasto{
+    height: 100%;
+    width: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+    margin-right:30px;
+   
+}
+
+.contenedor_buscar{
+    margin-right: 20px;
+    
+    height: 100%;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bi-search{
+    color: #54855c; 
+    font-size: 22px;
+    transform: scale(1.2); 
+    margin-bottom: 5px;
+
+    cursor: pointer;
+}
+
+.bi-basket {
+    font-size: 32px;
+    color: #54855c;
+    animation: shake 12s ease-in-out infinite; /* Animación de sacudida, 2 segundos con un movimiento suave */
+    margin-bottom: 2px;
+}
+
+/* Definimos la animación para sacudir */
+@keyframes shake {
+    0% {
+        transform: translateX(0); 
+    }
+    3% {
+        
+        transform: rotate(-25deg);
+    }
+    6% {
+      
+        transform: rotate(25deg);
+    }
+    9% {
+        
+        transform: rotate(-25deg);
+    }
+    12% {
+        
+        transform: rotate(25deg);
+    }
+    15%{
+        transform: translateX(0); 
+    }
+
+}
+
+
+.hamburguesa{
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    height: 24px;
+  
+    cursor: pointer;
+}
+
+.contenedor_hamburguesa{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    
+}
+
+
+.hamburguesa span{
+    display: block;
+    
+    margin-bottom: 6px;
+    width: 98%;
+    height: 2px;
+    
+    background-color: #4b4b4b;
+    transition: all 0.3s ease; 
+}
+
+
+.hamburguesa.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburguesa.active span:nth-child(2) {
+    opacity: 0; 
+}
+.hamburguesa.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.menu_buscar {
+    position: fixed;
+    z-index: 0;
+    top: -100%; 
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+    height: 85px; 
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.4s ease; 
+    margin-right: 20%;
+}
+
+.menu_buscar.active {
+    top: 80px; 
+    z-index: 1;
+}
+
+.menu_buscar p {
+    font-size: 14px;
+    color: #4b4b4b;
+}
+
+.buscar_input {
+    width: 60%;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.buscar_input:focus {
+    box-shadow: 0 0 5px #54855c;
+}
+
+.icono_filtro_orden{
+    
+    font-size: 20px;
+    width: 35px;
+    height: 40px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    padding: 2px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+
+.icono_filtro_orden:hover {
+    background-color: #f0f0f0;
+}
+
+
+.overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo gris claro */
+    z-index: 9; /* Fondo detrás del menú */
+    justify-content: center;
+    align-items: center;
+}
+
+
+.orden_opciones {
+    display: none; /* Oculto por defecto */
+    position: relative;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Capa por encima */
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.overlay.active {
+    display: flex;
+}
+
+.orden_opciones.active {
+    display: block;
+}
+
+
+.orden_opciones .opcion {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4b4b4b;
+    transition: background-color 0.3s ease;
+}
+
+.orden_opciones .opcion:hover {
+    background-color: #f4f4f4;
+    color: #000;
+}
+
+.contenedor_categorias {
+    display: block;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10; 
+    width: 300px;
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.contenedor_categorias.active {
+    display: flex;
+    
+}
+
+.categoria {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4b4b4b;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.categoria:hover {
+    background-color: #f0f0f0;
+}
+
+.categoria.active {
+    border-color: #4b4b4b;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #000;
+}
+
+.icono_filtro_categorias{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #f9f9f9;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.icono_filtro_categorias:hover {
+    background-color: #f0f0f0;
+}
+
+.icono_filtro_categorias i {
+    font-size: 20px;
+    color: #4b4b4b;
+}
+
+
+.menu_hamburguesa{
+    position: fixed;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    right: 9vw;
+    top: -100%; /* Ocultamos fuera de la pantalla (ajusta según el ancho del menú) */
+    height: 190px;
+    margin-top: 80px;
+    width: 150px;
+    background-color:white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 0px 0px 10px 10px;
+    transition: top 0.4s ease; /* Transición suave en 0.5 segundos */
+}
+
+.menu_hamburguesa.active {
+    top:0;
+    z-index: 1;
+}
+
+
+.enlaces a{
+    text-decoration: none;
+    
+}
+
+.texto_link{
+    color: rgb(68, 67, 67);
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 450;
+    transition:0.2s ease;
+    
+}
+
+.enlaces a:hover p{
+    transform: scale(1.2);
+}
+
+.span_menu_hamburguesa {
+    display: block;
+    margin-top: 10px;
+    width: 50%; 
+    height: 2%; 
+    background-color: #67bf9f; 
+    border-radius: 3px; 
+    transition: all 0.3s ease; 
+}
+
+.enlaces a:hover .span_menu_hamburguesa {
+    width: 100%;
+}
+
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Contenedor de las tarjetas */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Estilos para cada tarjeta */
+.card {
+    width: 300px;  /* Ancho fijo */
+    height: 400px; /* Alto fijo */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    position: relative;
+}
+
+/* Estilo de la imagen */
+.card-img {
+    width: 100%;
+    height: 300px;  /* Establecer una altura fija para la imagen */
+    object-fit: cover;  /* Ajustar la imagen para que ocupe el área sin distorsionarse */
+}
+
+/* Estilos para el cuerpo de la tarjeta */
+.card-body {
+    flex-grow: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Título y categoría */
+.card-title {
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.card-category {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+/* Descripción del producto */
+.card-description {
+    font-size: 13px;
+    color: #333;
+    flex-grow: 1;  /* Esto asegura que el contenido ocupe todo el espacio disponible */
+    margin-bottom: 10px;
+}
+/* Pie de la tarjeta (minimalista) */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-top: 1px solid #e0e0e0; /* Línea sutil para separar el footer */
+    margin-top: auto; /* Empuja el footer hacia abajo */
+}
+
+/* Precio del producto */
+.card-price {
+    font-weight: bold;
+    font-size: 16px;
+    color: #2d572c; /* Verde intenso para el precio */
+}
+
+/* Botones */
+.card-buttons button {
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botón "Añadir" - estilo normal */
+.card-buttons .btn-outline-success {
+    background-color: #979b8d; /* Verde intenso */
+    color: white;
+}
+
+/* Botón "Añadir" - hover */
+.card-buttons .btn-outline-success:hover {
+    background-color: #2ecc71; /* Verde claro */
+    color: white;
+}
+
+
+
+.banner-info {
+    width: 100%;
+    height: 140px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgb(252, 252, 252);
+    border-radius: 15px;
+
+    position: relative;
+    overflow: hidden; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+
+.banner-label {
+    
+    position: absolute;
+    top: 20px;
+    left: 150px;
+    background-color: rgba(46, 131, 40, 0.8); /* Verde pastel */
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    
+}
+
+/* Contenido del texto */
+.banner-contenido-info {
+    
+    animation: slideInLeft 1s ease-out forwards; /* Animación al cargar */
+    opacity: 0; /* Oculta inicialmente el contenido */
+    
+}
+
+/* Estilo del texto */
+.banner-contenido-info p {
+    font-weight: 500;
+    font-size: 30px;
+    color: rgba(46, 131, 40, 0.9); /* Verde pastel más intenso */
+}
+
+/* Forma decorativa en la parte inferior derecha */
+.banner-shape {
+    position: absolute;
+    bottom: -40px;
+    right: 150px;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(46, 131, 40, 0.1); /* Verde claro con transparencia */
+    border-radius: 50%;
+    z-index: 0; /* Detrás del texto */
+}
+
+/* Animación para el texto */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+/* Responsividad */
+@media (max-width: 915px) {
+
+
+    .banner-shape {
+        width: 120px;
+        height: 120px;
+        bottom: -30px;
+        right: -30px;
+    }
+
+
+    .banner-info {
+        height: 150px;
+    }
+
+    .banner-contenido-info p {
+        font-size: 24px;
+    }
+
+    .banner-label {
+    
+        
+        top: 8px;
+        left: 20px;
+        
+        font-size: 14px;
+        
+        
+    }
+    
+
+    .card {
+        width: 180px;  
+        height: 250px; 
+        
+    }
+
+    
+    .card-img {
+        height: 160px;  
+    }
+
+    .card-title {
+        font-size: 14px;
+       
+    }
+
+    .card-category {
+        font-size: 10px;
+        
+    }
+
+   
+    .card-description {
+        font-size: 10px;
+    
+    }
+
+    .card-price {
+        font-size: 12px;
+    }
+
+    /* Botones */
+    .card-buttons button {
+        font-size: 12px;
+    }
+
+
+
+}
+
